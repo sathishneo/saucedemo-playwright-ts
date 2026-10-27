@@ -1,17 +1,8 @@
-// Jenkins declarative pipeline. Works on Windows agents (bat) and Linux agents (sh).
-def run(String command) {
-  if (isUnix()) {
-    sh command
-  } else {
-    bat command
-  }
-}
-
 pipeline {
   agent any
 
   tools {
-    nodejs 'NodeJs'   // Must match the name shown in Manage Jenkins > Tools
+    nodejs 'NodeJs'
   }
 
   environment {
