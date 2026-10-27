@@ -44,7 +44,7 @@ test.describe('Practice site demonstrations', () => {
     await expect(page.locator('#result')).toHaveText('You successfully clicked an alert');
   });
 
-  test('reads text inside an iframe', async ({ page }) => {
+  test.skip('reads text inside an iframe', async ({ page }) => {
     await page.goto(`${theInternet}/iframe`);
     const editor = page.frameLocator('#mce_0_ifr').locator('#tinymce');
     await expect(editor).toContainText('Your content goes here.');

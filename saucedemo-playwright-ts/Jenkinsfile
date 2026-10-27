@@ -1,17 +1,8 @@
-// Jenkins declarative pipeline. Works on Windows agents (bat) and Linux agents (sh).
-def run(String command) {
-  if (isUnix()) {
-    sh command
-  } else {
-    bat command
-  }
-}
-
 pipeline {
   agent any
 
   tools {
-    nodejs 'NodeJS-20' // Must match the name in Manage Jenkins > Tools
+    nodejs 'NodeJs'   // Must match the name shown in Manage Jenkins > Tools
   }
 
   environment {
@@ -27,25 +18,25 @@ pipeline {
   stages {
     stage('Install dependencies') {
       steps {
-        run('npm ci')
+        bat 'npm ci'
       }
     }
 
     stage('Install browsers') {
       steps {
-        run('npx playwright install --with-deps chromium firefox webkit')
+        bat 'npx playwright install --with-deps chromium firefox webkit'
       }
     }
 
     stage('Lint (type check)') {
       steps {
-        run('npm run lint')
+        bat 'npm run lint'
       }
     }
 
     stage('Run tests') {
       steps {
-        run('npx playwright test')
+        bat 'npx playwright test'
       }
     }
   }
