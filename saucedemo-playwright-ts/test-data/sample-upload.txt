@@ -1,1 +1,0 @@
-Sample file used by the file upload demo test.

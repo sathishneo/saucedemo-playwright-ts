@@ -1,3 +1,12 @@
+// Jenkins declarative pipeline. Works on Windows agents (bat) and Linux agents (sh).
+def run(String command) {
+  if (isUnix()) {
+    sh command
+  } else {
+    bat command
+  }
+}
+
 pipeline {
   agent any
 
